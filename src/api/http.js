@@ -18,7 +18,8 @@ export async function authFetch(url, options = {}) {
   });
 
   if (!res.ok) {
-    throw new Error(await res.text());
+    const errorBody = await res.json();
+    throw new Error(errorBody.message || "Request failed");
   }
 
   return res.json();

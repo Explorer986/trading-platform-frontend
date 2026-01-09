@@ -20,14 +20,15 @@ export default function Register() {
     setLoading(true);
 
     try {
-      await register(form.username, form.email, form.password);
-      navigate("/register");
-    } catch (err) {
-      setError(err.message || "Registration failed");
-    } finally {
-      setLoading(false);
-      setError("Registration scuccessful! Please login.");
-    }
+  await register(form.username, form.email, form.password);
+  setError("Registration successful! Please login.");
+  navigate("/login");
+  } catch (err) {
+    setError(err.message || "Registration failed");
+  } finally {
+    setLoading(false);
+  }
+
   };
 
   return (
